@@ -39,7 +39,7 @@ The **Presidential Voting System** is a web-based platform designed to facilitat
  
 1. **Authentication**:
    - New users can sign up, while existing users can log in using their credentials.
-   - Upon successful login, users are redirected to the voting dashboard.
+   - Upon successful login, users are redirected to the voting dashboard where they will verify their NIN and VIN before they are able to vote
 
 2. **Protected Routes**:
    - Certain routes, such as the Presidential Voting Dashboard, are only accessible to logged-in users. Unauthenticated users are redirected to the login page.
