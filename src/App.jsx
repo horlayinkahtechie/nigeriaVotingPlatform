@@ -3,10 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import "./styles/App.css";
 
-import Presidential from "./components/executivepositions/Presidential";
+import Presidential from "./pages/Presidential";
 import Index from "./pages/Index";
 import SignUp from "./components/Authentication/Sign up";
 import SignIn from "./components/Authentication/Signin";
+// import resetYourPassword from "./components/Authentication/ResetPassword";
+import ResetPassword from "./components/Authentication/resetPassword";
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute";
 import PresidentialVotingDashBoard from "./pages/Presidential-voting-dashboard";
 import Sidebar from "./components/Sidebar";
@@ -36,7 +38,16 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        className="d-flex justify-content-center"
+        style={{ marginTop: "200px" }}
+      >
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -47,6 +58,7 @@ function App() {
         <Route path="/Auth/signup" element={<SignUp />} />
         <Route path="/Auth/login" element={<SignIn />} />
         <Route path="/how-to-vote" element={<Presidential />} />
+        <Route path="/Auth/resetpassword" element={<ResetPassword />} />
 
         {/* Protected Route */}
         <Route

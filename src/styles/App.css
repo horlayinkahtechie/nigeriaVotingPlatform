@@ -153,7 +153,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 15, 15, 0.8);
+  background-color: rgba(15, 15, 15, 0.7);
 }
 
 .carousel-section {
@@ -262,15 +262,16 @@ body {
 }
 
 .card {
-  /* background-color: rgb(249, 233, 233); */
-
-  padding: 60px;
-  margin: 30px auto;
-  text-align: center;
-  width: 100%;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 500;
-  /* height: 300px; */
+  background-color: #030f27;
+  color: white;
+  padding: 60px;
+  margin: 75px auto;
+  width: 400px;
+  height: 420px;
+  text-align: center;
+  border-bottom: 6px solid rgb(185, 40, 40);
 }
 
 .political-party-search::placeholder {
@@ -421,4 +422,104 @@ body {
 .account-status {
   color: green;
   margin-top: 20px;
+}
+
+.logoutbtn {
+  background-color: none;
+  font-size: 19px;
+  border: none;
+  outline: none;
+  margin-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 40px;
+  background-color: white;
+  color: green;
+  border-radius: 5px;
+  border: 1px solid green;
+}
+
+.analytics-icon {
+  background-color: #1b2435;
+  padding: 13px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.total-votes-p {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgb(201, 201, 201);
+  text-align: start;
+  margin-top: 14px;
+  margin-bottom: 0px;
+}
+
+.total-votes-heading {
+  font-size: 30px;
+  margin-top: 0px;
+  text-align: start;
+}
+
+.footer-heading {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bolder;
+  color: white;
+}
+
+.links {
+  list-style-type: none;
+  margin-left: -30px;
+}
+
+.link {
+  font-size: 19px;
+  color: white;
+  font-weight: 380;
+  text-decoration: none;
+}
+
+.disclaimers {
+  font-size: 19px;
+  color: white;
+  font-weight: 380;
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+
+.copyright {
+  font-size: 19px;
+  text-align: center;
+  font-weight: 500;
+  color: black;
+  margin-top: 43px;
+  padding-bottom: 5px;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 10;
+  top: 100;
+  width: 100%;
+  text-align: start;
+  color: white;
+}
+
+.carousel-heading {
+  font-size: 70px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.carousel-description {
+  font-size: 40px;
+  width: 80%;
+  line-height: 50px;
+  margin-top: 16px;
+}
+
+.form-width {
+  width: 400px;
 }

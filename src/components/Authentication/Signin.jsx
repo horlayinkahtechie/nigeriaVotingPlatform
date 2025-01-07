@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { supabase } from "../../supabaseClient";
 import Sidebar from "../Sidebar";
-import { Link } from "react-router-dom";
+import Footer from "../Footer";
+import { Link, useNavigate } from "react-router-dom";
+import nigerianFlag from "../../Images/nigerian flag.jpg";
 
-export default function SignIn() {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signInErrorMessage, setSignInErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // Use navigate as a function
+  const navigate = useNavigate();
 
   const handleSignIn = async () => {
     setIsLoading(true);
@@ -25,8 +30,34 @@ export default function SignIn() {
         setSignInErrorMessage("Please enter a valid email address.");
         return;
       }
-      console.log("Sign-in successful:", data);
-      // navigate("/dashboard");
+
+      const user = data.user;
+      if (user) {
+        console.log("Sign-in successful");
+        console.log("User Metadata:", user.user_metadata);
+
+        // Example: Access specific fields from user_metadata
+        const firstname = user.user_metadata?.firstname || "N/A";
+        const politicalparty = user.user_metadata?.politicalparty || "N/A";
+
+        console.log(`First Name: ${firstname}`);
+        console.log(`Political Party: ${politicalparty}`);
+
+        // Redirect to the voting dashboard
+        navigate("/Presidential-voting-dashboard");
+      } else {
+        throw new Error("Unable to retrieve user information.");
+      }
+
+      if (error) {
+        if (error.status === 400) {
+          throw new Error("Invalid email or password.");
+        } else if (error.status === 409) {
+          throw new Error("User already exists.");
+        } else {
+          throw new Error("An unexpected error occurred.");
+        }
+      }
     } catch (error) {
       setSignInErrorMessage(
         error.message || "Something went wrong. Please try again."
@@ -39,22 +70,24 @@ export default function SignIn() {
   return (
     <>
       <Sidebar />
-      <div
-        className="container-fluid"
-        style={{
-          marginTop: "100px",
-          paddingLeft: "100px",
-          paddingRight: "100px",
-        }}
-      >
-        <div className="row" style={{ margin: "40px auto" }}>
-          <div className="col-md-6">
+      <div className="container-fluid">
+        <div className="row">
+          <div
+            className="col-md-6"
+            style={{
+              margin: "0px auto",
+              padding: "180px 180px",
+              backgroundColor: "rgb(244, 244, 244)",
+              height: "100vh",
+            }}
+          >
             <h1 className="signin">Sign In</h1>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSignIn();
               }}
+              className="form-width"
             >
               <div>
                 <input
@@ -76,22 +109,53 @@ export default function SignIn() {
                   required
                 />
               </div>
+              <p className="text-end">
+                Forgot password?{" "}
+                <Link to="/Auth/resetpassword">Reset here</Link>
+              </p>
               <button type="submit" className="form-submit">
                 Sign In
               </button>
             </form>
 
             <p className="account-status">
-              Dont have an account? <Link to="/Auth/Signup">Sign up</Link>
+              Don&apos;t have an account? <Link to="/Auth/Signup">Sign up</Link>
             </p>
 
             {signInErrorMessage && (
               <p style={{ color: "red" }}>{signInErrorMessage}</p>
             )}
-            {isLoading && <p style={{ color: "green" }}>Loading...</p>}
+            {isLoading && (
+              <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="col-md-6">
+            <div className="carousel-item active">
+              <div className="carousel-overlay"></div>
+              <img
+                src={nigerianFlag}
+                className="img-fluid"
+                alt="Nigerian flag"
+                style={{ height: "100vh" }}
+              />
+              <div className="carousel-caption">
+                <h5 className="carousel-heading">Remember,</h5>
+                <h5 className="carousel-description">
+                  We are the future. Make your vote count by voting for the
+                  candidate of your choice.
+                </h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
-}
+};
+
+export default SignIn;

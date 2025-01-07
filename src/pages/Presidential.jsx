@@ -1,8 +1,7 @@
-import Sidebar from "../Sidebar";
-import AbujaArialView from "../../Images/Abuja.png";
-import APCPresidentialCandidateDetails from "./APCPresidentialCandidateDetails";
+import Sidebar from "../components/Sidebar";
+import AbujaArialView from "../Images/Abuja.png";
 import { Link } from "react-router-dom";
-import PDPPresidentialCandidateDetails from "./PDPPresidentialCandidateDetails";
+import Footer from "../components/Footer";
 
 export default function Presidential() {
   return (
@@ -94,6 +93,7 @@ export default function Presidential() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

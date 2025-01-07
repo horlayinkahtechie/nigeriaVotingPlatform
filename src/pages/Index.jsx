@@ -1,10 +1,8 @@
-// import Navbar from "./Navbar";
 import Sidebar from "../components/Sidebar";
 import Carousel from "../components/Carousel";
 import FAQs from "../components/FAQs";
-import VoteData from "../components/VoteData";
-// import Chart from "./Chart";
-// import VoteData from "./VoteData";
+import Footer from "../components/Footer";
+// import VoteData from "../components/VoteData";
 export default function Index() {
   return (
     <>
@@ -82,7 +80,8 @@ export default function Index() {
       </div>
       <FAQs />
 
-      <VoteData />
+      <Footer />
+      {/* <VoteData /> */}
     </>
   );
 }

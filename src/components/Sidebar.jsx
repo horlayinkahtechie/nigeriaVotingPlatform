@@ -1,5 +1,6 @@
 import CoatOfArm from "../Images/Nigeria coat of arm.jfif";
 import { Link } from "react-router-dom";
+import Logout from "./Authentication/Logout";
 
 export default function Sidebar({ user }) {
   return (
@@ -75,11 +76,10 @@ export default function Sidebar({ user }) {
                       </>
                     ) : (
                       <>
-                        {console.log("User is not authenticated")}
                         <Link
                           to="/Auth/login"
                           className="dropdown-item"
-                          style={{ fontSize: "18px", color: "red" }}
+                          style={{ fontSize: "18px", color: "green" }}
                         >
                           Login
                         </Link>
@@ -87,6 +87,11 @@ export default function Sidebar({ user }) {
                     )}
                   </li>
                 </ul>
+                <li>
+                  <button type="button" className="logoutbtn" onClick={Logout}>
+                    Log out
+                  </button>
+                </li>
               </li>
             </ul>
             <form className="d-flex mt-3" role="search">
