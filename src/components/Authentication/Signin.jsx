@@ -111,7 +111,7 @@ const SignIn = () => {
               </div>
               <p className="text-end">
                 Forgot password?{" "}
-                <Link to="/Auth/resetpassword">Reset here</Link>
+                <Link to="/Auth/Resetpassword">Reset here</Link>
               </p>
               <button type="submit" className="form-submit">
                 Sign In

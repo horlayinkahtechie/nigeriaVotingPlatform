@@ -7,8 +7,7 @@ import Presidential from "./pages/Presidential";
 import Index from "./pages/Index";
 import SignUp from "./components/Authentication/Sign up";
 import SignIn from "./components/Authentication/Signin";
-// import resetYourPassword from "./components/Authentication/ResetPassword";
-import ResetPassword from "./components/Authentication/resetPassword";
+import ResetPassword from "./components/Authentication/ResetPassword";
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute";
 import PresidentialVotingDashBoard from "./pages/Presidential-voting-dashboard";
 import Sidebar from "./components/Sidebar";
@@ -58,7 +57,7 @@ function App() {
         <Route path="/Auth/signup" element={<SignUp />} />
         <Route path="/Auth/login" element={<SignIn />} />
         <Route path="/how-to-vote" element={<Presidential />} />
-        <Route path="/Auth/resetpassword" element={<ResetPassword />} />
+        <Route path="/Auth/Resetpassword" element={<ResetPassword />} />
 
         {/* Protected Route */}
         <Route

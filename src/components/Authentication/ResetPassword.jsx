@@ -14,7 +14,8 @@ const ResetPassword = () => {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: "http://localhost:5173/reset-password",
+        redirectTo:
+          "https://presidentialvotingsystem.netlify.app/Resetpassword",
       });
 
       if (error) throw error;
