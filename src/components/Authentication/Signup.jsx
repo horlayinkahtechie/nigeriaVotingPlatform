@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { supabase } from "../../supabaseClient";
+import supabase from "../../supabaseClient";
 import { Link, useNavigate } from "react-router-dom";
-import Sidebar from "../Sidebar";
+// import Navbar from "../components/Navbar";
 import Footer from "../Footer";
-import nigerianFlag from "../../Images/nigerian flag.jpg";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -45,7 +44,7 @@ const Signup = () => {
       if (error) throw new Error(error.message);
 
       // Success - Redirect to verify page
-      navigate("/verifyMailPage");
+      navigate("/Auth/VerifyMail");
     } catch (error) {
       setSignUpErrorMessage(
         error.message || "An error occurred during sign-up."
@@ -57,36 +56,9 @@ const Signup = () => {
 
   return (
     <>
-      <Sidebar />
-      <div className="container-fluid">
+      <div className="container-fluid mt-5 form-parent">
         <div className="row">
-          <div className="col-md-6">
-            <div className="carousel-item active">
-              <div className="carousel-overlay"></div>
-              <img
-                src={nigerianFlag}
-                className="img-fluid"
-                alt="Nigerian flag"
-                style={{ height: "100vh" }}
-              />
-              <div className="carousel-caption">
-                <h5 className="carousel-heading">Remember,</h5>
-                <h5 className="carousel-description">
-                  We are the future. Make your vote count by voting for the
-                  candidate of your choice.
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div
-            className="col-md-6"
-            style={{
-              margin: "0px auto",
-              padding: "180px 180px",
-              backgroundColor: "rgb(244, 244, 244)",
-              height: "100vh",
-            }}
-          >
+          <div className="col-md-12 form-center">
             <h1 className="signup">Sign Up</h1>
             <form
               onSubmit={(e) => {
@@ -147,23 +119,6 @@ const Signup = () => {
                 </div>
               </div>
             )}
-          </div>
-          <div className="col-md-6">
-            <div className="carousel-item active">
-              <div className="carousel-overlay"></div>
-              <img
-                src={nigerianFlag}
-                className="img-fluid"
-                alt="Nigerian flag"
-                style={{ height: "100vh" }}
-              />
-              <div className="carousel-caption">
-                <h5 className="carousel-heading">Remember,</h5>
-                <h5 className="carousel-description">
-                  We are the future, make your vote count.
-                </h5>
-              </div>
-            </div>
           </div>
         </div>
       </div>

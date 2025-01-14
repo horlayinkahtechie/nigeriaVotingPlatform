@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-function verifyMailPage() = {
-    return (
-        <div>
-            <p style={{color: "green"}}>Verify your email and <Link to="/Auth/Login">Log in</Link></p>
-        </div>
-    )
-}
+import Sidebar from "../Sidebar";
 
-export default verifyMailPage;
+export default function verifyMailPage() {
+  return (
+    <>
+      <Sidebar />
+      <p style={{ color: "green" }}>
+        Verify your email and <Link to="/Auth/login">Log in</Link>
+      </p>
+    </>
+  );
+}
