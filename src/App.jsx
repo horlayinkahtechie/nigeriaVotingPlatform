@@ -11,7 +11,7 @@ import ResetPassword from "./components/Authentication/ResetPassword";
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute";
 import PresidentialVotingDashBoard from "./pages/Presidential-voting-dashboard";
 import Sidebar from "./components/Sidebar";
-import VerifyMailPage from "./components/Authentication/VerifyMailPage";
+import VerifyMailPage from "./components/Authentication/verifyMailPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -59,7 +59,7 @@ function App() {
         <Route path="/Auth/login" element={<SignIn />} />
         <Route path="/how-to-vote" element={<Presidential />} />
         <Route path="/Auth/Resetpassword" element={<ResetPassword />} />
-        <Route path="Auth/VerifyMail" element={<VerifyMailPage />} />
+        <Route path="Auth/VerifyMailPage" element={<VerifyMailPage />} />
 
         {/* Protected Route */}
         <Route

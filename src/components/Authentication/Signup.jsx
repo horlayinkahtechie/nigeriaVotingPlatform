@@ -44,7 +44,7 @@ const Signup = () => {
       if (error) throw new Error(error.message);
 
       // Success - Redirect to verify page
-      navigate("/Auth/VerifyMail");
+      navigate("/Auth/VerifyMailPage");
     } catch (error) {
       setSignUpErrorMessage(
         error.message || "An error occurred during sign-up."
