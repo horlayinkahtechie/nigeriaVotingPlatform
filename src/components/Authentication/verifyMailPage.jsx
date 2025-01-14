@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 
-export default function verifyMailPage() {
+export default function VerifyMailPage() {
   return (
     <>
       <Sidebar />
