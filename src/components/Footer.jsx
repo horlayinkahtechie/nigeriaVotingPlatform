@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import CoatOfArm from "../Images/Nigeria coat of arm.jfif";
+// import CoatOfArm from "../Images/Nigeria coat of arm.jfif";
 
 export default function Footer() {
   return (
-    <div
-      className="container-fluid bg-success p-4"
+    <footer
+      className="container-fluid bg-success footer-padding"
       style={{ paddingBottom: "15px" }}
     >
-      <img
+      {/* <img
         src={CoatOfArm}
         style={{ width: "90px", height: "90px" }}
         alt="coatOfArm"
-      />
+      /> */}
       <div
         className="row mt-4"
         style={{
@@ -60,7 +60,9 @@ export default function Footer() {
           <p className="disclaimers">
             <b>Disclaimer:</b> This voting system is Designed and Developed by
             Alao Abdul-salam Olayinka. Beware of copyright violations.
-            Disclaimer: This voting system is authorized by the Electoral
+          </p>
+          <p className="disclaimers">
+            <b>Disclaimer:</b> This voting system is authorized by the Electoral
             Commission of Nigeria. Ensure your information is accurate before
             submitting.
           </p>
@@ -70,10 +72,10 @@ export default function Footer() {
           </p>
         </div>
         <div className="col-md-12 copyright">
-          © 2024 Presidential Voting System. All rights reserved. Design and
+          © 2025 Presidential Voting System. All rights reserved. Design and
           Developed by Alao Abdul-salam Olayinka
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

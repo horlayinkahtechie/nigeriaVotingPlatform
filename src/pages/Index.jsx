@@ -6,11 +6,11 @@ import Footer from "../components/Footer";
 export default function Index() {
   return (
     <>
-      <div className="container-fluid">
-        <div className="col-md-12">
+      <div className="container-fluid carousel-color">
+        <div className="col-md-12 carousel">
           <Sidebar />
         </div>
-        <div className="col-md-12" style={{ marginTop: "100px" }}>
+        <div className="col-md-12">
           <Carousel />
         </div>
       </div>

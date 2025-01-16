@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import "./styles/App.css";
+import "./styles/Responsive_styles.css";
 
 import Presidential from "./pages/Presidential";
 import Index from "./pages/Index";

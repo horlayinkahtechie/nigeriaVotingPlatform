@@ -1,0 +1,35 @@
+/* For small screens, phone up to 600px */
+@media only screen and (max-width: 768px) {
+  .carousel {
+    width: 90vw;
+    margin: 10px auto;
+    padding-bottom: 320px;
+  }
+
+  .carousel-headings {
+    font-size: 55px;
+    font-weight: 500;
+  }
+
+  .carousel-p {
+    font-size: 24px;
+    line-height: 45px;
+    font-weight: 400;
+  }
+  .section-color {
+    background-color: rgb(244, 244, 244);
+    color: black;
+    padding: 70px;
+  }
+
+  .footer-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  .footer-heading {
+    margin-top: 40px;
+  }
+}

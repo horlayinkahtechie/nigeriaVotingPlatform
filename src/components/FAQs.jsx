@@ -44,7 +44,7 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample1">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               This platform allows users to vote for candidates in presidential
               and other political positions. It aims to provide a transparent
               and secure voting experience.
@@ -90,8 +90,8 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample2">
-            <div className="card dropdown-menu-color">
-              Click on the "Sign Up" button and fill in the required
+            <div className="dropdown-menu-color">
+              Click on the &quot;Sign Up&quot; button and fill in the required
               information. You’ll receive a confirmation email to verify your
               account.
             </div>
@@ -136,7 +136,7 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample3">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               Yes, your vote is completely anonymous. We do not store any
               identifiable information with your voting choices.
             </div>
@@ -181,7 +181,7 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample4">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               No, each registered user is only allowed to vote once per position
               to ensure fair and accurate results.
             </div>
@@ -226,10 +226,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample5">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               Once you&apos;re logged in, navigate to the voting page, select
               the position you wish to vote for, and choose your preferred
-              candidate. Click "Submit" to cast your vote.
+              candidate. Click &quot;Submit&quot; to cast your vote.
             </div>
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample6">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               Once the voting period ends, results will be displayed on the
               results page, showing the final tally for each candidate.
             </div>
@@ -317,7 +317,7 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample7">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               Only registered users who meet the eligibility criteria set by the
               administrators can participate.
             </div>
@@ -362,7 +362,7 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample8">
-            <div className="card dropdown-menu-color">
+            <div className="dropdown-menu-color">
               Yes, each election has a specific voting period. Make sure to cast
               your vote before the deadline. The end time will be displayed on
               the voting page.

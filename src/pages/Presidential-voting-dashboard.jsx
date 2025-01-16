@@ -268,7 +268,7 @@ const PresidentialVotingDashBoard = () => {
       >
         <Sidebar />
         <h3 className="voting-dashBoard-heading">
-          Welcome,
+          Welcome,{" "}
           {user && user.user_metadata.username
             ? user.user_metadata.username
             : " User"}
