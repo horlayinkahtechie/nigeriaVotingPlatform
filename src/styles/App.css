@@ -250,8 +250,15 @@ body {
   font-weight: 500;
   padding: 0;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 50px;
   /* color: green; */
+}
+
+.party-input {
+  display: flex;
+  gap: 20px;
+  width: 800px;
+  margin: 70px auto;
 }
 
 .voting-dashBoard-p {
@@ -361,6 +368,13 @@ body {
   margin-top: 8px;
 }
 
+.how-to-vote-padding {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .steps {
   font-size: 33px;
   margin-bottom: 30px;
@@ -373,6 +387,7 @@ body {
   padding: 50px;
   font-size: 21px;
   color: green;
+  margin-bottom: 50px;
 }
 
 .form-verification-checkmark {
@@ -419,6 +434,15 @@ body {
   color: black;
 }
 
+.form-login {
+  margin: 200px auto;
+  margin-bottom: 0px;
+  width: 400px;
+  height: 100vh;
+}
+.img-style {
+  height: 100vh;
+}
 .account-status {
   color: green;
   margin-top: 20px;
@@ -452,7 +476,7 @@ body {
   font-weight: 400;
   color: rgb(201, 201, 201);
   text-align: start;
-  margin-top: 14px;
+  margin-top: 25px;
   margin-bottom: 0px;
 }
 

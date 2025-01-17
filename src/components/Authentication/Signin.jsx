@@ -73,17 +73,12 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div
+        className="container-fluid"
+        style={{ backgroundColor: "rgba(244, 244, 244)" }}
+      >
         <div className="row">
-          <div
-            className="col-md-6"
-            style={{
-              margin: "0px auto",
-              padding: "180px 180px",
-              backgroundColor: "rgb(244, 244, 244)",
-              height: "100vh",
-            }}
-          >
+          <div className="col-md-6 form-login">
             <h1 className="signin">Sign In</h1>
             <form
               onSubmit={(e) => {
@@ -175,9 +170,8 @@ const SignIn = () => {
               <div className="carousel-overlay"></div>
               <img
                 src={nigerianFlag}
-                className="img-fluid"
+                className="img-fluid img-style"
                 alt="Nigerian flag"
-                style={{ height: "100vh" }}
               />
               <div className="carousel-caption">
                 <h5 className="carousel-heading">Remember,</h5>

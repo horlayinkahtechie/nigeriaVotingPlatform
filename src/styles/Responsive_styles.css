@@ -32,4 +32,81 @@
   .footer-heading {
     margin-top: 40px;
   }
+
+  .carousel-caption {
+    position: absolute;
+    left: 10;
+    top: 0;
+    width: 100%;
+    text-align: start;
+    color: white;
+    margin-top: 100px;
+  }
+
+  .carousel-heading {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 0px;
+  }
+
+  .carousel-description {
+    font-size: 27px;
+    width: 80%;
+    line-height: 40px;
+    margin-top: 16px;
+  }
+
+  .how-to-vote-padding {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .steps-background-color {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    font-size: 19px;
+    color: green;
+    margin-bottom: 50px;
+  }
+
+  .party-input {
+    display: flex;
+    gap: 20px;
+    width: 500px;
+    margin: 70px auto;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    font-size: 22px;
+    font-weight: 500;
+    background-color: #030f27;
+    color: white;
+    padding: 60px;
+    margin: 75px auto;
+    margin-bottom: 10px;
+    width: 400px;
+    height: 420px;
+    text-align: center;
+    border-bottom: 6px solid rgb(185, 40, 40);
+  }
+
+  .form-login {
+    margin: 100px auto;
+
+    width: 400px;
+    height: 50vh;
+  }
+
+  .form-width {
+    width: 400px;
+  }
+
+  .img-style {
+    height: 60vh;
+    width: 100vw;
+  }
 }

@@ -1,4 +1,3 @@
-import Sidebar from "../components/Sidebar";
 import AbujaArialView from "../Images/Abuja.png";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -6,7 +5,6 @@ import Footer from "../components/Footer";
 export default function Presidential() {
   return (
     <div>
-      <Sidebar />
       <div className="carousel-inner">
         <div className="carousel-item active">
           <div className="carousel-overlay"></div>
@@ -24,7 +22,7 @@ export default function Presidential() {
             </h5>
             <button type="button" className="carousel-vote-button">
               <Link
-                to="/Voting-dashboard"
+                to="/presidential-voting-dashboard"
                 style={{ textDecoration: "none", color: "white" }}
               >
                 VOTE NOW
@@ -59,14 +57,7 @@ export default function Presidential() {
           illo!
         </p>
 
-        <div
-          style={{
-            paddingLeft: "60px",
-            paddingRight: "60px",
-            paddingTop: "60px",
-            paddingBottom: "60px",
-          }}
-        >
+        <div className="how-to-vote-padding">
           <h3 className="steps" style={{ marginTop: "10px" }}>
             Step 1
           </h3>

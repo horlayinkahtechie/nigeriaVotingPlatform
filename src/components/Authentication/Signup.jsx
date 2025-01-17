@@ -96,9 +96,8 @@ const Signup = () => {
               <div className="carousel-overlay"></div>
               <img
                 src={nigerianFlag}
-                className="img-fluid"
+                className="img-fluid img-style"
                 alt="Nigerian flag"
-                style={{ height: "100vh" }}
               />
               <div className="carousel-caption">
                 <h5 className="carousel-heading">Remember,</h5>
@@ -109,15 +108,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div
-            className="col-md-6"
-            style={{
-              margin: "0px auto",
-              padding: "180px 180px",
-              backgroundColor: "rgb(244, 244, 244)",
-              height: "100vh",
-            }}
-          >
+          <div className="col-md-6 form-login">
             <h1 className="signup">Sign Up</h1>
             <form
               onSubmit={(e) => {
