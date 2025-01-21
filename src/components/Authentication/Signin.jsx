@@ -38,7 +38,7 @@ const SignIn = () => {
       const user = data.user;
       if (user) {
         console.log("Sign-in successful");
-        console.log("User Metadata:", user.user_metadata);
+        // console.log("User Metadata:", user.user_metadata);
 
         // Example: Access specific fields from user_metadata
         const firstname = user.user_metadata?.firstname || "N/A";

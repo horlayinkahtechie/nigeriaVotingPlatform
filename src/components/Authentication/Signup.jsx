@@ -7,6 +7,11 @@ import nigerianFlag from "../../Images/nigerian flag.jpg";
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+
+  const [nin, setNin] = useState("");
+  const [showNinError, setShowNinError] = useState(false);
+  const [isNinVerified, setIsNinVerified] = useState(false);
+
   const [password, setPassword] = useState("");
   const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +23,37 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  const handleNinVerification = async (e) => {
+    e.preventDefault();
+    try {
+      if (nin === "123456789") {
+        setIsNinVerified(true);
+        // setNinVerificationMessage("Verified");
+        console.log("NIN Verified!");
+      } else if (nin === "") {
+        setIsNinVerified(false);
+        // setNinVerificationMessage("Not Verified");
+        console.log("Empty input");
+      } else {
+        setIsNinVerified(false);
+        // setNinVerificationMessage("Not Verified");
+        console.log(isNinVerified);
+        // console.log("NIN not verified");
+        setIsNinVerified(false);
+        // setNinVerificationMessage("Not Verified");
+        console.log("NIN is incorrect");
+
+        // Display error for 2 seconds
+        setShowNinError(true);
+        setTimeout(() => {
+          setShowNinError(false);
+        }, 2000);
+      }
+    } catch (error) {
+      // setNinVerificationMessage("Error verifying NIN.", error);
+      console.log(error, "Error verifying NIN");
+    }
+  };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -50,35 +86,39 @@ const Signup = () => {
     setIsLoading(true);
     setSignUpErrorMessage("");
 
-    // Validation
-    if (!email.includes("@")) {
-      setSignUpErrorMessage("Please enter a valid email address.");
-      setIsLoading(false);
-      return;
-    }
-
-    if (password.length < 6) {
-      setSignUpErrorMessage("Password must be at least 6 characters long.");
-      setIsLoading(false);
-      return;
-    }
-
     try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            username,
+      const { data: signUpData, error: signUpError } =
+        await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              username,
+              nin,
+            },
           },
-        },
-      });
+        });
 
-      if (error) throw new Error(error.message);
+      if (signUpError) {
+        throw new Error(signUpError.message);
+      }
 
-      // Success - Redirect to verify page
-      navigate("/Auth/VerifyMailPage");
+      if (signUpData.user) {
+        // Insert additional details into a custom table
+        const { error: insertError } = await supabase
+          .from("users")
+          .insert([{ email, username, nin }]);
+
+        if (insertError) {
+          console.error("Insert Error:", insertError);
+          throw new Error("Error storing additional user details.");
+        }
+
+        // Navigate to the verify email page
+        navigate("/Auth/VerifyMailPage");
+      }
     } catch (error) {
+      console.error("Sign-Up Error:", error);
       setSignUpErrorMessage(
         error.message || "An error occurred during sign-up."
       );
@@ -136,6 +176,34 @@ const Signup = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
+              </div>
+              <div>
+                <input
+                  required
+                  value={nin}
+                  onChange={(e) => setNin(e.target.value)}
+                  type="number"
+                  placeholder="National Identification Number (NIN)"
+                  className="form-control form-width-height"
+                  name=""
+                />
+                {showNinError ? (
+                  <p style={{ color: "red", marginTop: "10px" }}>
+                    NIN is Incorrect
+                  </p>
+                ) : isNinVerified ? (
+                  <p style={{ color: "green", marginTop: "10px" }}>
+                    Your NIN has been verified!
+                  </p>
+                ) : (
+                  <a
+                    href="#"
+                    style={{ color: "green", marginTop: "10px" }}
+                    onClick={handleNinVerification}
+                  >
+                    Verify
+                  </a>
+                )}
               </div>
               <div>
                 <div className="input-container">

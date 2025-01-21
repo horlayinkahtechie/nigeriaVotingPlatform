@@ -16,13 +16,12 @@ const PresidentialVotingDashBoard = () => {
   const [stateOfOrigin, setStateOfOrigin] = useState("");
   const [stateOfResidence, setStateOfResidence] = useState("");
 
-  const [stats, setStats] = useState({ totalVotes: "0", userVote: 0 });
+  const [stats, setStats] = useState({ totalVotes: 0, userVote: 0 });
   const [user, setUser] = useState(null);
 
   const [nin, setNin] = useState("");
   const [isNinVerified, setIsNinVerified] = useState(false);
   const [ninVerificationMessage, setNinVerificationMessage] = useState("");
-  const [showNinError, setShowNinError] = useState(false);
 
   const [vin, setVin] = useState("");
   const [isVinVerified, setIsVinVerified] = useState(false);
@@ -67,38 +66,6 @@ const PresidentialVotingDashBoard = () => {
     setVoteSubmit(false);
   };
 
-  const handleNinVerification = async (e) => {
-    e.preventDefault();
-    try {
-      if (nin === "123456789") {
-        setIsNinVerified(true);
-        setNinVerificationMessage("Verified");
-        console.log("NIN Verified!");
-      } else if (nin === "") {
-        setIsNinVerified(false);
-        setNinVerificationMessage("Not Verified");
-        console.log("Empty input");
-      } else {
-        setIsNinVerified(false);
-        setNinVerificationMessage("Not Verified");
-        console.log(isNinVerified);
-        console.log("NIN not verified");
-        setIsNinVerified(false);
-        setNinVerificationMessage("Not Verified");
-        console.log("NIN is incorrect");
-
-        // Display error for 2 seconds
-        setShowNinError(true);
-        setTimeout(() => {
-          setShowNinError(false);
-        }, 2000);
-      }
-    } catch (error) {
-      setNinVerificationMessage("Error verifying NIN.", error);
-      console.log("Error verifying NIN");
-    }
-  };
-
   const handleVinVerification = async (e) => {
     e.preventDefault();
     try {
@@ -124,6 +91,61 @@ const PresidentialVotingDashBoard = () => {
     } catch (error) {
       setVinVerificationMessage("Error verifying VIN.");
       console.error("Error Verifying VIN:", error);
+    }
+  };
+
+  const handleNinVerification = async (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+
+    try {
+      // Fetch the user's stored NIN from the database
+      const { data: users, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("nin", nin);
+
+      if (error) {
+        console.error("Error fetching user data:", error);
+        setNinVerificationMessage(
+          error.message || "Something went wrong while verifying your NIN."
+        );
+        setIsNinVerified(false);
+        return;
+      }
+
+      if (!users || users.length === 0) {
+        setIsNinVerified(false);
+        throw new Error("No user found with the provided NIN.");
+      }
+
+      const user = users[0];
+      console.log(user);
+      const storedNin = user.nin;
+      console.log("Stored NIN:", storedNin);
+
+      const sanitizedNin = nin.trim();
+      console.log("Input NIN:", sanitizedNin);
+
+      if (sanitizedNin == storedNin) {
+        setIsNinVerified(true);
+        setNinVerificationMessage("Your NIN has been Verified");
+        console.log("NIN Verified!");
+      } else {
+        setIsNinVerified(false);
+        setNinVerificationMessage("NIN does not match.");
+        console.log("NIN is incorrect.");
+
+        setTimeout(() => {
+          setIsNinVerified(false); // Re-enable the button
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Error during NIN verification:", error);
+      setNinVerificationMessage(error.message || "Error verifying NIN.");
+      setIsNinVerified(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -357,16 +379,19 @@ const PresidentialVotingDashBoard = () => {
                 </div>
               </div>
               <p className="total-votes-p">No of Authenticated users</p>
-              <p className="total-votes-heading">1</p>
-              {/* {loading ? (
-                  <p style={{ textAlign: "start" }}> <div className="d-flex mt-3">
+              {/* <p className="total-votes-heading">1</p> */}
+              {loading ? (
+                <p style={{ textAlign: "start" }}>
+                  {" "}
+                  <div className="d-flex mt-3">
                     <div className="spinner-border" role="status">
                       <span className="visually-hidden">Loading...</span>
                     </div>
-                  </div></p>
-                ) : (
-                  <p className="total-votes-heading">{stats.totalUsers}</p>
-                )} */}
+                  </div>
+                </p>
+              ) : (
+                <p className="total-votes-heading">{stats.totalUsers}</p>
+              )}
             </div>
             <div className="col-md-3 card">
               <div style={{ display: "flex", gap: "20px" }}>
@@ -553,28 +578,41 @@ const PresidentialVotingDashBoard = () => {
                 <input
                   required
                   value={nin}
-                  onChange={(e) => setNin(e.target.value)}
                   type="number"
                   placeholder="National Identification Number (NIN)"
                   className="form-control form-width-height"
                   name=""
+                  onChange={(e) => setNin(e.target.value)}
                 />
-                {showNinError ? (
-                  <p style={{ color: "red", marginTop: "10px" }}>
-                    NIN is Incorrect
-                  </p>
-                ) : isNinVerified ? (
-                  <p style={{ color: "green", marginTop: "10px" }}>
-                    Your NIN has been verified!
-                  </p>
-                ) : (
-                  <a
-                    href="#"
-                    style={{ color: "green", marginTop: "10px" }}
+
+                {isNinVerified === false && (
+                  <button
+                    style={{
+                      color: "white",
+                      backgroundColor: "green",
+                      border: "none",
+                      padding: "10px 20px",
+                      marginTop: "10px",
+                      cursor: "pointer",
+                    }}
                     onClick={handleNinVerification}
                   >
-                    Verify
-                  </a>
+                    Verify NIN
+                  </button>
+                )}
+
+                {loading && (
+                  <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                )}
+
+                {ninVerificationMessage && (
+                  <p style={{ color: "green", marginTop: "10px" }}>
+                    {ninVerificationMessage}
+                  </p>
                 )}
               </div>
 
@@ -669,12 +707,7 @@ const PresidentialVotingDashBoard = () => {
 
             <button
               type="submit"
-              disabled={
-                voteSubmit ||
-                !isNinVerified ||
-                !isVinVerified ||
-                !affirmationCheck
-              }
+              disabled={voteSubmit || !isVinVerified || !affirmationCheck}
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               className="btn btn-outline-success vote-submit mt-5"
@@ -812,29 +845,41 @@ const PresidentialVotingDashBoard = () => {
                 <input
                   required
                   value={nin}
-                  onChange={(e) => setNin(e.target.value)}
                   type="number"
                   placeholder="National Identification Number (NIN)"
                   className="form-control form-width-height"
                   name=""
-                  id=""
+                  onChange={(e) => setNin(e.target.value)}
                 />
-                {showNinError ? (
-                  <p style={{ color: "red", marginTop: "10px" }}>
-                    NIN is Incorrect
-                  </p>
-                ) : isNinVerified ? (
-                  <p style={{ color: "green", marginTop: "10px" }}>
-                    Your NIN has been verified!
-                  </p>
-                ) : (
-                  <a
-                    href="#"
-                    style={{ color: "green", marginTop: "10px" }}
+
+                {isNinVerified === false && (
+                  <button
+                    style={{
+                      color: "white",
+                      backgroundColor: "green",
+                      border: "none",
+                      padding: "10px 20px",
+                      marginTop: "10px",
+                      cursor: "pointer",
+                    }}
                     onClick={handleNinVerification}
                   >
-                    Verify
-                  </a>
+                    Verify NIN
+                  </button>
+                )}
+
+                {loading && (
+                  <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                )}
+
+                {ninVerificationMessage && (
+                  <p style={{ color: "green", marginTop: "10px" }}>
+                    {ninVerificationMessage}
+                  </p>
                 )}
               </div>
 
@@ -979,13 +1024,11 @@ const PresidentialVotingDashBoard = () => {
                     <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
                   </svg>
                   <p style={{ color: "green", fontSize: "20px" }}>
-                    Your vote has been submitted. Weldone!
+                    {voteStatus}
                   </p>
                 </div>
               )}
-              {voteStatus && (
-                <p style={{ color: "green", fontSize: "20px" }}>{voteStatus}</p>
-              )}
+
               {error && (
                 <div className="text-center">
                   <svg
