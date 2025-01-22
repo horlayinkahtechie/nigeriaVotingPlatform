@@ -2,9 +2,7 @@ export default function FAQs() {
   return (
     <div className="container-fluid section-color">
       <h3 className="faq-heading">Frequently Asked Questions</h3>
-      <p className="faq-p">
-        Everything you need to know about the voting. From how to vote.
-      </p>
+      <p className="faq-p">Everything you need to know about the voting.</p>
       <div className="row">
         <div
           className="col-md-12"

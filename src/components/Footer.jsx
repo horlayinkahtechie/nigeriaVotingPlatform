@@ -3,24 +3,13 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer
-      className="container-fluid bg-success footer-padding"
-      style={{ paddingBottom: "15px" }}
-    >
+    <footer className="container-fluid bg-success footer-padding">
       {/* <img
         src={CoatOfArm}
         style={{ width: "90px", height: "90px" }}
         alt="coatOfArm"
       /> */}
-      <div
-        className="row mt-4"
-        style={{
-          paddingLeft: "50px",
-          paddingRight: "50px",
-          paddingTop: "30px",
-          paddingBottom: "15px",
-        }}
-      >
+      <div className="row mt-4 footer-inner-padding">
         <div className="col-md-4">
           <h3 className="footer-heading">QUICK LINKS</h3>
           <ul className="links">
