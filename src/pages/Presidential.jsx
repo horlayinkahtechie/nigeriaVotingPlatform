@@ -10,9 +10,8 @@ export default function Presidential() {
           <div className="carousel-overlay"></div>
           <img
             src={AbujaArialView}
-            className="d-block w-100 img-fluid"
-            alt="..."
-            style={{ maxHeight: "87vh", minHeight: "50vh" }}
+            className="d-block w-100 img-fluid carousel-image"
+            alt="Abuja view"
             loading="lazy"
           />
           <div className="carousel-caption section">

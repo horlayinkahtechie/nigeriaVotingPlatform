@@ -165,7 +165,7 @@ const SignIn = () => {
               </div>
             )}
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 mobile-display-remove">
             <div className="carousel-item active">
               <div className="carousel-overlay"></div>
               <img

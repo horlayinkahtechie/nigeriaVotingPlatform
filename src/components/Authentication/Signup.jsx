@@ -131,7 +131,7 @@ const Signup = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 mobile-display-remove">
             <div className="carousel-item active">
               <div className="carousel-overlay"></div>
               <img
@@ -184,21 +184,21 @@ const Signup = () => {
                   onChange={(e) => setNin(e.target.value)}
                   type="number"
                   placeholder="National Identification Number (NIN)"
-                  className="form-control form-width-height"
+                  className="form-input form-control"
                   name=""
                 />
                 {showNinError ? (
-                  <p style={{ color: "red", marginTop: "10px" }}>
+                  <p style={{ color: "red", marginTop: "0px" }}>
                     NIN is Incorrect
                   </p>
                 ) : isNinVerified ? (
-                  <p style={{ color: "green", marginTop: "10px" }}>
+                  <p style={{ color: "green", marginTop: "0px" }}>
                     Your NIN has been verified!
                   </p>
                 ) : (
                   <a
                     href="#"
-                    style={{ color: "green", marginTop: "10px" }}
+                    style={{ color: "green", marginTop: "0px" }}
                     onClick={handleNinVerification}
                   >
                     Verify
@@ -206,7 +206,7 @@ const Signup = () => {
                 )}
               </div>
               <div>
-                <div className="input-container">
+                <div className="input-container mt-3">
                   <input
                     type={showPassword ? "text" : "password"}
                     className="form-input form-control"

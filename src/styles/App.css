@@ -52,14 +52,25 @@ body {
   font-weight: 400;
 }
 
-.carousel-vote-button,
+.carousel-vote-button {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 15px;
+  margin-top: 20px;
+  width: 190px;
+  background-color: rgb(14, 205, 14);
+  color: white;
+  border-radius: 50px;
+  font-weight: 500;
+}
 .carousel-login-button {
   font-size: 20px;
   border: none;
   outline: none;
   padding: 15px;
   margin-top: 20px;
-  width: 130px;
+  width: 145px;
   background-color: rgb(14, 205, 14);
   color: white;
   border-radius: 50px;
@@ -180,7 +191,7 @@ body {
 }
 
 .carousel-heading {
-  font-size: 60px;
+  font-size: 20px;
   text-align: start;
 }
 
@@ -409,8 +420,6 @@ body {
   width: 18px;
   height: 18px;
 }
-.steps-background-color:hover {
-}
 
 .form-input {
   width: 400px;
@@ -553,21 +562,31 @@ body {
   color: white;
 }
 
+.carousel-image {
+  width: 100vw;
+  height: 100vh;
+}
+
+.display-flex {
+  display: flex;
+  gap: 13px;
+}
+
 .carousel-color {
   background-color: green;
   color: white;
 }
 
 .carousel-heading {
-  font-size: 70px;
+  font-size: 50px;
   font-weight: 500;
   margin-bottom: 0px;
 }
 
 .carousel-description {
-  font-size: 40px;
+  font-size: 32px;
   width: 80%;
-  line-height: 50px;
+  /* line-height: 50px; */
   margin-top: 16px;
 }
 
