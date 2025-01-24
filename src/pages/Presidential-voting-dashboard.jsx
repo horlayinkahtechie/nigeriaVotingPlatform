@@ -25,13 +25,14 @@ const PresidentialVotingDashBoard = () => {
 
   const [vin, setVin] = useState("");
   const [isVinVerified, setIsVinVerified] = useState(false);
-  const [vinVerificationMessage, setVinVerificationMessage] = useState("");
   const [showVinError, setShowVinError] = useState(false);
 
-  const [affirmationCheck, setAffirmationCheck] = useState(false);
+  const [affirmationCheck1, setAffirmationCheck1] = useState("");
+  const [affirmationCheck2, setAffirmationCheck2] = useState("");
+  const [affirmationCheck3, setAffirmationCheck3] = useState("");
+
   const [voteStatus, setVoteStatus] = useState("");
   const [voteSubmit, setVoteSubmit] = useState(false);
-  // const [checkDuplicateVote, setCheckDuplicateVote] = useState("");
 
   const [error, setError] = useState(false);
   const [loading, setIsLoading] = useState(false);
@@ -54,14 +55,14 @@ const PresidentialVotingDashBoard = () => {
 
   const searchFunc = (e) => {
     e.preventDefault();
-    // console.log(isSearching);
     setNin("");
     setVin("");
-    setAffirmationCheck(false);
+    setAffirmationCheck1("");
+    setAffirmationCheck2("");
+    setAffirmationCheck3("");
     setIsNinVerified(false);
     setIsVinVerified(false);
     setNinVerificationMessage("");
-    setVinVerificationMessage("");
     setVoteStatus("No vote yet");
     setVoteSubmit(false);
   };
@@ -71,15 +72,12 @@ const PresidentialVotingDashBoard = () => {
     try {
       if (vin === "345678910") {
         setIsVinVerified(true);
-        setVinVerificationMessage("Verified");
         console.log("VIN Verified");
       } else if (vin === "") {
         setIsVinVerified(false);
-        setVinVerificationMessage("Not Verified");
         console.log("Empty input");
       } else {
         setIsVinVerified(false);
-        setVinVerificationMessage("Not Verified");
         console.log("VIN is incorrect");
 
         // Display error for 2 seconds
@@ -89,7 +87,8 @@ const PresidentialVotingDashBoard = () => {
         }, 2000);
       }
     } catch (error) {
-      setVinVerificationMessage("Error verifying VIN.");
+      setIsVinVerified(false);
+      // setVinVerificationMessage("Error verifying VIN.");
       console.error("Error Verifying VIN:", error);
     }
   };
@@ -150,15 +149,15 @@ const PresidentialVotingDashBoard = () => {
   };
 
   const handleCheckBox1 = (e) => {
-    setAffirmationCheck(e.target.checked);
+    setAffirmationCheck1(e.target.checked);
   };
 
   const handleCheckBox2 = (e) => {
-    setAffirmationCheck(e.target.checked);
+    setAffirmationCheck2(e.target.checked);
   };
 
   const handleCheckBox3 = (e) => {
-    setAffirmationCheck(e.target.checked);
+    setAffirmationCheck3(e.target.checked);
   };
 
   const fetchStats = async () => {
@@ -308,15 +307,28 @@ const PresidentialVotingDashBoard = () => {
             onChange={(e) => setIsSearching(e.target.value)}
             value={isSearching}
             className="form-control form-control-lg political-party-search"
-            placeholder="Search by your preferred Political Party. E.g APC"
-            style={{ width: "500px", height: "38px", borderRadius: "0px" }}
+            placeholder="Select your Political Party. E.g APC"
           />
+
           <button
             type="submit"
             className="btn btn-outline-success"
-            style={{ width: "160px", fontSize: "19px", borderRadius: "0px" }}
+            style={{
+              borderRadius: "0px",
+              border: "none",
+              outline: "none",
+            }}
           >
-            Search
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              className="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
           </button>
         </form>
       </div>
@@ -342,7 +354,7 @@ const PresidentialVotingDashBoard = () => {
                   </svg>
                 </div>
                 <div className="mt-2">
-                  <p className="text-center">Total votes</p>
+                  <p className="text-center analytics-heading">Total votes</p>
                 </div>
               </div>
 
@@ -375,7 +387,7 @@ const PresidentialVotingDashBoard = () => {
                   </svg>
                 </div>
                 <div className="mt-2">
-                  <p className="text-center">Total Users</p>
+                  <p className="text-center analytics-heading">Total Users</p>
                 </div>
               </div>
               <p className="total-votes-p">No of Authenticated users</p>
@@ -408,7 +420,7 @@ const PresidentialVotingDashBoard = () => {
                   </svg>
                 </div>
                 <div className="col-md-6 mt-2">
-                  <p className="text-center">Your votes</p>
+                  <p className="text-center analytics-heading">Your votes</p>
                 </div>
               </div>
               <p className="total-votes-p">Your total vote count</p>
@@ -442,7 +454,9 @@ const PresidentialVotingDashBoard = () => {
                   </svg>
                 </div>
                 <div className="mt-2">
-                  <p className="text-center">Participating Party</p>
+                  <p className="text-center analytics-heading">
+                    Participating Party
+                  </p>
                 </div>
               </div>
               <p className="total-votes-p">No of participating party</p>
@@ -667,8 +681,8 @@ const PresidentialVotingDashBoard = () => {
               <label>
                 <input
                   required
-                  checked={affirmationCheck}
-                  onChange={handleCheckBox1}
+                  checked={affirmationCheck1}
+                  onClick={handleCheckBox1}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -680,8 +694,8 @@ const PresidentialVotingDashBoard = () => {
               <label>
                 <input
                   required
-                  checked={affirmationCheck}
-                  onChange={handleCheckBox2}
+                  checked={affirmationCheck2}
+                  onClick={handleCheckBox2}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -693,8 +707,8 @@ const PresidentialVotingDashBoard = () => {
               <label>
                 <input
                   required
-                  checked={affirmationCheck}
-                  onChange={handleCheckBox3}
+                  checked={affirmationCheck3}
+                  onClick={handleCheckBox3}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -707,7 +721,13 @@ const PresidentialVotingDashBoard = () => {
 
             <button
               type="submit"
-              disabled={voteSubmit || !isVinVerified || !affirmationCheck}
+              disabled={
+                voteSubmit ||
+                !isVinVerified ||
+                !affirmationCheck1 ||
+                !affirmationCheck2 ||
+                !affirmationCheck3
+              }
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               className="btn btn-outline-success vote-submit mt-5"
@@ -932,9 +952,9 @@ const PresidentialVotingDashBoard = () => {
             <div className="form-verification-checkmark">
               <label>
                 <input
-                  checked={affirmationCheck}
+                  checked={affirmationCheck1}
                   required
-                  onChange={handleCheckBox1}
+                  onClick={handleCheckBox1}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -945,8 +965,8 @@ const PresidentialVotingDashBoard = () => {
 
               <label>
                 <input
-                  checked={affirmationCheck}
-                  onChange={handleCheckBox2}
+                  checked={affirmationCheck2}
+                  onClick={handleCheckBox2}
                   required
                   type="checkbox"
                   className="checkbox"
@@ -959,8 +979,8 @@ const PresidentialVotingDashBoard = () => {
               <label>
                 <input
                   required
-                  checked={affirmationCheck}
-                  onChange={handleCheckBox3}
+                  checked={affirmationCheck3}
+                  onClick={handleCheckBox3}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -978,7 +998,9 @@ const PresidentialVotingDashBoard = () => {
                 voteSubmit ||
                 !isNinVerified ||
                 !isVinVerified ||
-                !affirmationCheck
+                !affirmationCheck1 ||
+                !affirmationCheck2 ||
+                !affirmationCheck3
               }
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"

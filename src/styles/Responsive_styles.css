@@ -118,8 +118,8 @@
 
   .party-input {
     display: flex;
-    gap: 20px;
-    width: 500px;
+    gap: 15px;
+    width: 90vw;
     margin: 70px auto;
     margin-bottom: 10px;
   }
@@ -130,12 +130,41 @@
     background-color: #030f27;
     color: white;
     padding: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
     margin: 75px auto;
     margin-bottom: 10px;
     width: 400px;
     height: 420px;
     text-align: center;
     border-bottom: 6px solid rgb(185, 40, 40);
+  }
+
+  .analytics-heading {
+    font-size: 20px;
+  }
+
+  .analytics-icon {
+    background-color: #1b2435;
+    padding: 13px;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+  }
+
+  .total-votes-p {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(201, 201, 201);
+    text-align: start;
+    margin-top: 25px;
+    margin-bottom: 0px;
+  }
+
+  .total-votes-heading {
+    font-size: 25px;
+    margin-top: 0px;
+    text-align: start;
   }
 
   .form-login {
@@ -145,11 +174,11 @@
   }
 
   .form-width {
-    width: 400px;
+    width: 90vw;
   }
 
   .form-input {
-    width: 400px;
+    width: 90vw;
     height: 45px;
     margin-bottom: 20px;
     border-radius: 0px;
@@ -172,6 +201,32 @@
     font-size: 25px;
     font-weight: 500;
     text-align: center;
+  }
+
+  .voting-dashBoard-heading {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    margin-top: 50px;
+    /* color: green; */
+  }
+
+  .voting-dashBoard-p {
+    font-size: 17px;
+    margin-top: 6px;
+    font-weight: 400;
+    /* color: green; */
+  }
+
+  .political-party-search::placeholder {
+    font-size: 16px;
+  }
+
+  .political-party-search {
+    width: 80vw;
+    height: 38px;
+    border-radius: 0px;
   }
 
   .steps {
@@ -245,5 +300,55 @@
 
   .mobile-display-remove {
     display: none;
+  }
+
+  .pdp-voting-page-heading {
+    color: green;
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .pdp-voting-page-p {
+    font-size: 16.5px;
+    font-weight: 400;
+    color: green;
+    text-align: center;
+  }
+
+  .residential-information,
+  .voting-detials-form,
+  .verification-information,
+  .vote-confirmation {
+    font-size: 25px;
+    color: green;
+    margin-top: 70px;
+    margin-bottom: 0px;
+  }
+
+  .form-section-bg-color {
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 16px;
+    margin-top: 40px;
+  }
+
+  .form-width-height {
+    width: 80vw;
+    height: 50px;
+    border-radius: 10px;
+  }
+  .form-width-height::placeholder {
+    font-size: 17px;
+  }
+
+  .form-verification-checkmark {
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: 450;
+    text-transform: uppercase;
   }
 }
