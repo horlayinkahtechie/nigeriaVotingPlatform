@@ -44,11 +44,7 @@ export default function Footer() {
           <h3 className="footer-heading">LEGAL AND COMPLIANCE</h3>
           <p className="disclaimers">
             <b>Disclaimer:</b> This voting system is Designed and Developed by
-            Alao Abdul-salam Olayinka. Beware of copyright violations.
-          </p>
-          <p className="disclaimers">
-            <b>Disclaimer:</b> This voting system is Designed and Developed by
-            Alao Abdul-salam Olayinka. Beware of copyright violations.
+            Ridwan Akorede Ogunshola Beware of copyright violations.
           </p>
           <p className="disclaimers">
             <b>Disclaimer:</b> This voting system is authorized by the Electoral
@@ -62,7 +58,7 @@ export default function Footer() {
         </div>
         <div className="col-md-12 copyright">
           © 2025 Presidential Voting System. All rights reserved. Design and
-          Developed by Alao Abdul-salam Olayinka
+          Developed by Ridwan Akorede Ogunshola
         </div>
       </div>
     </footer>
