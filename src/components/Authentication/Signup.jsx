@@ -2,7 +2,7 @@ import { useState } from "react";
 import supabase from "../../supabaseClient";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer";
-import nigerianFlag from "../../Images/nigerian flag.jpg";
+import students from "../../Images/students.jpg";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -135,15 +135,17 @@ const Signup = () => {
             <div className="carousel-item active">
               <div className="carousel-overlay"></div>
               <img
-                src={nigerianFlag}
+                src={students}
                 className="img-fluid img-style"
                 alt="Nigerian flag"
               />
               <div className="carousel-caption">
-                <h5 className="carousel-heading">Remember,</h5>
+                <h5 className="carousel-heading">
+                  Students, the power is in your hands.
+                </h5>
                 <h5 className="carousel-description">
-                  We are the future. Make your vote count by voting for the
-                  candidate of your choice.
+                  This is more than just a vote. It&apos;s your say in how our
+                  school is led.
                 </h5>
               </div>
             </div>

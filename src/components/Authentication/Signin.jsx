@@ -2,7 +2,8 @@ import { useState } from "react";
 import { supabase } from "../../supabaseClient";
 import Footer from "../Footer";
 import { Link, useNavigate } from "react-router-dom";
-import nigerianFlag from "../../Images/nigerian flag.jpg";
+// import nigerianFlag from "../../Images/nigerian flag.jpg";
+import students from "../../Images/students.jpg";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ const SignIn = () => {
         console.log(`Political Party: ${politicalparty}`);
 
         // Redirect to the voting dashboard
-        navigate("/Presidential-voting-dashboard");
+        navigate("/fci-voting-dashboard");
       } else {
         throw new Error("Unable to retrieve user information.");
       }
@@ -169,15 +170,16 @@ const SignIn = () => {
             <div className="carousel-item active">
               <div className="carousel-overlay"></div>
               <img
-                src={nigerianFlag}
+                src={students}
                 className="img-fluid img-style"
                 alt="Nigerian flag"
               />
               <div className="carousel-caption">
-                <h5 className="carousel-heading">Remember,</h5>
+                <h5 className="carousel-heading">Your Voice, Your Future.</h5>
                 <h5 className="carousel-description">
-                  We are the future. Make your vote count by voting for the
-                  candidate of your choice.
+                  Student elections shape our campus, our leadership, and our
+                  experience. Make your voice heard. Cast your vote for the
+                  candidate who represents your vision.
                 </h5>
               </div>
             </div>

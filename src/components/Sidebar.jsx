@@ -1,4 +1,5 @@
-import CoatOfArm from "../Images/Nigeria coat of arm.jfif";
+// import CoatOfArm from "../Images/Nigeria coat of arm.jfif";
+import logo from "../Images/logoyct.png";
 import { Link } from "react-router-dom";
 import Logout from "./Authentication/Logout";
 
@@ -8,7 +9,7 @@ export default function Sidebar({ user }) {
       <div className="container-fluid">
         <Link to="/">
           <img
-            src={CoatOfArm}
+            src={logo}
             className="img-fluid coat-of-arm"
             alt="Nigeria Coat of Arm"
           />
@@ -67,11 +68,11 @@ export default function Sidebar({ user }) {
                       <>
                         {console.log("User is authenticated:", user)}
                         <Link
-                          to="/presidential-voting-dashboard"
+                          to="/fci-voting-dashboard"
                           className="dropdown-item"
                           style={{ fontSize: "18px" }}
                         >
-                          Presidential Voting Dashboard
+                          Student Voting Dashboard
                         </Link>
                       </>
                     ) : (

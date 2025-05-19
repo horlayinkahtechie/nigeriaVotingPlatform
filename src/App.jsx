@@ -64,7 +64,7 @@ function App() {
 
         {/* Protected Route */}
         <Route
-          path="/presidential-voting-dashboard"
+          path="/fci-voting-dashboard"
           element={
             <ProtectedRoute user={user}>
               <PresidentialVotingDashBoard />

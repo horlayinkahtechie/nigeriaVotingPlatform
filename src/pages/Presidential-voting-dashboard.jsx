@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import supabase from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
-import nigeriaStates from "../components/Nigeria states and local govt/nigeriastates.json";
+// import nigeriaStates from "../components/Nigeria states and local govt/nigeriastates.json";
 import Footer from "../components/Footer";
 
 const PresidentialVotingDashBoard = () => {
@@ -13,19 +13,19 @@ const PresidentialVotingDashBoard = () => {
   const [dob, setDob] = useState("");
   const [email, setEmail] = useState("");
   const [phoneno, setPhone] = useState("");
-  const [stateOfOrigin, setStateOfOrigin] = useState("");
-  const [stateOfResidence, setStateOfResidence] = useState("");
+  // const [stateOfOrigin, setStateOfOrigin] = useState("");
+  // const [stateOfResidence, setStateOfResidence] = useState("");
 
   const [stats, setStats] = useState({ totalVotes: 0, userVote: 0 });
   const [user, setUser] = useState(null);
 
   const [nin, setNin] = useState("");
   const [isNinVerified, setIsNinVerified] = useState(false);
-  const [ninVerificationMessage, setNinVerificationMessage] = useState("");
+  // const [ninVerificationMessage, setNinVerificationMessage] = useState("");
 
   const [vin, setVin] = useState("");
   const [isVinVerified, setIsVinVerified] = useState(false);
-  const [showVinError, setShowVinError] = useState(false);
+  // const [showVinError, setShowVinError] = useState(false);
 
   const [affirmationCheck1, setAffirmationCheck1] = useState("");
   const [affirmationCheck2, setAffirmationCheck2] = useState("");
@@ -62,91 +62,91 @@ const PresidentialVotingDashBoard = () => {
     setAffirmationCheck3("");
     setIsNinVerified(false);
     setIsVinVerified(false);
-    setNinVerificationMessage("");
+    // setNinVerificationMessage("");
     setVoteStatus("No vote yet");
     setVoteSubmit(false);
   };
 
-  const handleVinVerification = async (e) => {
-    e.preventDefault();
-    try {
-      if (vin === "345678910") {
-        setIsVinVerified(true);
-        console.log("VIN Verified");
-      } else if (vin === "") {
-        setIsVinVerified(false);
-        console.log("Empty input");
-      } else {
-        setIsVinVerified(false);
-        console.log("VIN is incorrect");
+  // const handleVinVerification = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (vin === "345678910") {
+  //       setIsVinVerified(true);
+  //       console.log("VIN Verified");
+  //     } else if (vin === "") {
+  //       setIsVinVerified(false);
+  //       console.log("Empty input");
+  //     } else {
+  //       setIsVinVerified(false);
+  //       console.log("VIN is incorrect");
 
-        // Display error for 2 seconds
-        setShowVinError(true);
-        setTimeout(() => {
-          setShowVinError(false);
-        }, 2000);
-      }
-    } catch (error) {
-      setIsVinVerified(false);
-      // setVinVerificationMessage("Error verifying VIN.");
-      console.error("Error Verifying VIN:", error);
-    }
-  };
+  //       // Display error for 2 seconds
+  //       setShowVinError(true);
+  //       setTimeout(() => {
+  //         setShowVinError(false);
+  //       }, 2000);
+  //     }
+  //   } catch (error) {
+  //     setIsVinVerified(false);
+  //     // setVinVerificationMessage("Error verifying VIN.");
+  //     console.error("Error Verifying VIN:", error);
+  //   }
+  // };
 
-  const handleNinVerification = async (e) => {
-    setIsLoading(true);
-    e.preventDefault();
+  // const handleNinVerification = async (e) => {
+  //   setIsLoading(true);
+  //   e.preventDefault();
 
-    try {
-      // Fetch the user's stored NIN from the database
-      const { data: users, error } = await supabase
-        .from("users")
-        .select("*")
-        .eq("nin", nin);
+  //   try {
+  //     // Fetch the user's stored NIN from the database
+  //     const { data: users, error } = await supabase
+  //       .from("users")
+  //       .select("*")
+  //       .eq("nin", nin);
 
-      if (error) {
-        console.error("Error fetching user data:", error);
-        setNinVerificationMessage(
-          error.message || "Something went wrong while verifying your NIN."
-        );
-        setIsNinVerified(false);
-        return;
-      }
+  //     if (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setNinVerificationMessage(
+  //         error.message || "Something went wrong while verifying your NIN."
+  //       );
+  //       setIsNinVerified(false);
+  //       return;
+  //     }
 
-      if (!users || users.length === 0) {
-        setIsNinVerified(false);
-        throw new Error("No user found with the provided NIN.");
-      }
+  //     if (!users || users.length === 0) {
+  //       setIsNinVerified(false);
+  //       throw new Error("No user found with the provided NIN.");
+  //     }
 
-      const user = users[0];
-      console.log(user);
-      const storedNin = user.nin;
-      console.log("Stored NIN:", storedNin);
+  //     const user = users[0];
+  //     console.log(user);
+  //     const storedNin = user.nin;
+  //     console.log("Stored NIN:", storedNin);
 
-      const sanitizedNin = nin.trim();
-      console.log("Input NIN:", sanitizedNin);
+  //     const sanitizedNin = nin.trim();
+  //     console.log("Input NIN:", sanitizedNin);
 
-      if (sanitizedNin == storedNin) {
-        setIsNinVerified(true);
-        setNinVerificationMessage("Your NIN has been Verified");
-        console.log("NIN Verified!");
-      } else {
-        setIsNinVerified(false);
-        setNinVerificationMessage("NIN does not match.");
-        console.log("NIN is incorrect.");
+  //     if (sanitizedNin == storedNin) {
+  //       setIsNinVerified(true);
+  //       setNinVerificationMessage("Your NIN has been Verified");
+  //       console.log("NIN Verified!");
+  //     } else {
+  //       setIsNinVerified(false);
+  //       setNinVerificationMessage("NIN does not match.");
+  //       console.log("NIN is incorrect.");
 
-        setTimeout(() => {
-          setIsNinVerified(false); // Re-enable the button
-        }, 2000);
-      }
-    } catch (error) {
-      console.error("Error during NIN verification:", error);
-      setNinVerificationMessage(error.message || "Error verifying NIN.");
-      setIsNinVerified(false);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //       setTimeout(() => {
+  //         setIsNinVerified(false); // Re-enable the button
+  //       }, 2000);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during NIN verification:", error);
+  //     setNinVerificationMessage(error.message || "Error verifying NIN.");
+  //     setIsNinVerified(false);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   const handleCheckBox1 = (e) => {
     setAffirmationCheck1(e.target.checked);
@@ -258,8 +258,8 @@ const PresidentialVotingDashBoard = () => {
           lastName,
           otherName,
           phoneno,
-          stateOfResidence,
-          stateOfOrigin,
+          // stateOfResidence,
+          // stateOfOrigin,
           dob,
           vin,
           nin,
@@ -293,7 +293,7 @@ const PresidentialVotingDashBoard = () => {
             : " User"}
         </h3>
         <p className="voting-dashBoard-p">
-          Search the political party of the candidate you want to vote for.
+          Search the department of the candidate you want to vote for.
         </p>
 
         <form
@@ -307,7 +307,7 @@ const PresidentialVotingDashBoard = () => {
             onChange={(e) => setIsSearching(e.target.value)}
             value={isSearching}
             className="form-control form-control-lg political-party-search"
-            placeholder="Select your Political Party. E.g APC"
+            placeholder="Search the department of your candidate. E.g Computer Science"
           />
 
           <button
@@ -455,18 +455,18 @@ const PresidentialVotingDashBoard = () => {
                 </div>
                 <div className="mt-2">
                   <p className="text-center analytics-heading">
-                    Participating Party
+                    Participating Dept
                   </p>
                 </div>
               </div>
-              <p className="total-votes-p">No of participating party</p>
+              <p className="total-votes-p">No of participating dept</p>
               <p className="total-votes-heading">3</p>
             </div>
           </div>
         </div>
       )}
 
-      {isSearching === "pdp" && (
+      {isSearching === "Computer Science" && (
         <div
           className="container-fluid section-color voting-form-padding"
           style={{ paddingTop: "30px" }}
@@ -550,7 +550,7 @@ const PresidentialVotingDashBoard = () => {
               </div>
             </div>
 
-            <h3 className="residential-information">Residential Information</h3>
+            {/* <h3 className="residential-information">Residential Information</h3>
             <div className="row form-section-bg-color">
               <div className="col-md-4 mt-4">
                 <select
@@ -582,7 +582,7 @@ const PresidentialVotingDashBoard = () => {
                   ))}
                 </select>
               </div>
-            </div>
+            </div> */}
 
             <h3 className="verification-information">
               Verification Information
@@ -593,13 +593,13 @@ const PresidentialVotingDashBoard = () => {
                   required
                   value={nin}
                   type="number"
-                  placeholder="National Identification Number (NIN)"
+                  placeholder="Matric No"
                   className="form-control form-width-height"
                   name=""
                   onChange={(e) => setNin(e.target.value)}
                 />
 
-                {isNinVerified === false && (
+                {/* {isNinVerified === false && (
                   <button
                     style={{
                       color: "white",
@@ -627,7 +627,7 @@ const PresidentialVotingDashBoard = () => {
                   <p style={{ color: "green", marginTop: "10px" }}>
                     {ninVerificationMessage}
                   </p>
-                )}
+                )} */}
               </div>
 
               <div className="col-md-4 mt-4">
@@ -635,13 +635,13 @@ const PresidentialVotingDashBoard = () => {
                   required
                   value={vin}
                   onChange={(e) => setVin(e.target.value)}
-                  type="number"
-                  placeholder="Voters Identification Number (VIN)"
+                  type="text"
+                  placeholder="Your Department"
                   className="form-control form-width-height"
                   name=""
                   id=""
                 />
-                {showVinError ? (
+                {/* {showVinError ? (
                   <p style={{ color: "red", marginTop: "10px" }}>
                     VIN is Incorrect
                   </p>
@@ -657,7 +657,7 @@ const PresidentialVotingDashBoard = () => {
                   >
                     Verify
                   </a>
-                )}
+                )} */}
               </div>
             </div>
 
@@ -682,7 +682,7 @@ const PresidentialVotingDashBoard = () => {
                 <input
                   required
                   checked={affirmationCheck1}
-                  onClick={handleCheckBox1}
+                  onChange={handleCheckBox1}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -695,20 +695,20 @@ const PresidentialVotingDashBoard = () => {
                 <input
                   required
                   checked={affirmationCheck2}
-                  onClick={handleCheckBox2}
+                  onChange={handleCheckBox2}
                   type="checkbox"
                   className="checkbox"
                   name=""
                   id=""
                 />{" "}
-                I verify that I am 100% sure I selected my preferred political
-                party to vote for
+                I verify that I am 100% sure I selected my preferred department
+                to vote for.
               </label>
               <label>
                 <input
                   required
                   checked={affirmationCheck3}
-                  onClick={handleCheckBox3}
+                  onChange={handleCheckBox3}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -723,7 +723,6 @@ const PresidentialVotingDashBoard = () => {
               type="submit"
               disabled={
                 voteSubmit ||
-                !isVinVerified ||
                 !affirmationCheck1 ||
                 !affirmationCheck2 ||
                 !affirmationCheck3
@@ -739,7 +738,7 @@ const PresidentialVotingDashBoard = () => {
         </div>
       )}
 
-      {isSearching === "apc" && (
+      {isSearching === "Information System Science" && (
         <div
           className="container-fluid section-color voting-form-padding"
           style={{ paddingTop: "30px" }}
@@ -823,7 +822,7 @@ const PresidentialVotingDashBoard = () => {
               </div>
             </div>
 
-            <h3 className="residential-information">Residential Information</h3>
+            {/* <h3 className="residential-information">Residential Information</h3>
             <div className="row form-section-bg-color">
               <div className="col-md-4 mt-4">
                 <select
@@ -855,7 +854,7 @@ const PresidentialVotingDashBoard = () => {
                   ))}
                 </select>
               </div>
-            </div>
+            </div> */}
 
             <h3 className="verification-information">
               Verification Information
@@ -866,13 +865,13 @@ const PresidentialVotingDashBoard = () => {
                   required
                   value={nin}
                   type="number"
-                  placeholder="National Identification Number (NIN)"
+                  placeholder="Matric No"
                   className="form-control form-width-height"
                   name=""
                   onChange={(e) => setNin(e.target.value)}
                 />
 
-                {isNinVerified === false && (
+                {/* {isNinVerified === false && (
                   <button
                     style={{
                       color: "white",
@@ -900,7 +899,7 @@ const PresidentialVotingDashBoard = () => {
                   <p style={{ color: "green", marginTop: "10px" }}>
                     {ninVerificationMessage}
                   </p>
-                )}
+                )} */}
               </div>
 
               <div className="col-md-4 mt-4">
@@ -908,13 +907,13 @@ const PresidentialVotingDashBoard = () => {
                   required
                   value={vin}
                   onChange={(e) => setVin(e.target.value)}
-                  type="number"
-                  placeholder="Voters Identification Number (VIN)"
+                  type="text"
+                  placeholder="Your Department"
                   className="form-control form-width-height"
                   name=""
                   id=""
                 />
-                {showVinError ? (
+                {/* {showVinError ? (
                   <p style={{ color: "red", marginTop: "10px" }}>
                     VIN is Incorrect
                   </p>
@@ -930,7 +929,7 @@ const PresidentialVotingDashBoard = () => {
                   >
                     Verify
                   </a>
-                )}
+                )} */}
               </div>
             </div>
 
@@ -954,7 +953,7 @@ const PresidentialVotingDashBoard = () => {
                 <input
                   checked={affirmationCheck1}
                   required
-                  onClick={handleCheckBox1}
+                  onChange={handleCheckBox1}
                   type="checkbox"
                   className="checkbox"
                   name=""
@@ -973,8 +972,8 @@ const PresidentialVotingDashBoard = () => {
                   name=""
                   id=""
                 />{" "}
-                I verify that I am 100% sure I selected my preferred political
-                party to vote for
+                I verify that I am 100% sure I selected my preferred department
+                to vote for
               </label>
               <label>
                 <input
@@ -996,8 +995,278 @@ const PresidentialVotingDashBoard = () => {
               // onClick={submitFunc}
               disabled={
                 voteSubmit ||
-                !isNinVerified ||
-                !isVinVerified ||
+                !affirmationCheck1 ||
+                !affirmationCheck2 ||
+                !affirmationCheck3
+              }
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              className="btn btn-outline-success vote-submit mt-5"
+              style={{ fontSize: "19.5px" }}
+            >
+              {voteSubmit ? "Vote Submitted" : "Vote"}
+            </button>
+          </form>
+        </div>
+      )}
+
+      {isSearching === "Cyber Security" && (
+        <div
+          className="container-fluid section-color voting-form-padding"
+          style={{ paddingTop: "30px" }}
+        >
+          <h3 className="pdp-voting-page-heading">
+            {isSearching.toUpperCase()} Voting Page
+          </h3>
+          <p className="pdp-voting-page-p">
+            Welcome to {isSearching.toUpperCase()} Voting page. Input your
+            details and verify before submitting.{" "}
+          </p>
+
+          <form action="" onSubmit={submitFunc}>
+            <h3 className="voting-detials-form mt-5">Personal Information</h3>
+
+            <div className="row form-section-bg-color">
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  type="text"
+                  placeholder="Firstname"
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="form-control form-width-height"
+                />
+              </div>
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  type="text"
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Lastname"
+                  className="form-control form-width-height"
+                  name=""
+                  id=""
+                />
+              </div>
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  type="text"
+                  onChange={(e) => setOtherName(e.target.value)}
+                  placeholder="Middle name"
+                  className="form-control form-width-height"
+                  name=""
+                  id=""
+                />
+              </div>
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  type="text"
+                  onChange={(e) => setDob(e.target.value)}
+                  placeholder="Date of Birth"
+                  className="form-control form-width-height"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="E-mail Address"
+                  className="form-control form-width-height"
+                  name=""
+                  id=""
+                />
+              </div>
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  onChange={(e) => setPhone(e.target.value)}
+                  type="text"
+                  placeholder="Phone number"
+                  className="form-control form-width-height"
+                  name=""
+                  id=""
+                />
+              </div>
+            </div>
+
+            {/* <h3 className="residential-information">Residential Information</h3>
+            <div className="row form-section-bg-color">
+              <div className="col-md-4 mt-4">
+                <select
+                  id="food-select"
+                  required
+                  onChange={(e) => setStateOfOrigin(e.target.value)}
+                  className="form-control form-width-height"
+                >
+                  <option value="">State of Origin</option>
+                  {nigeriaStates.map((stateObj, index) => (
+                    <option key={index} value={stateObj.state}>
+                      {stateObj.state}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-md-4 mt-4">
+                <select
+                  id="food-select"
+                  required
+                  onChange={(e) => setStateOfResidence(e.target.value)}
+                  className="form-control form-width-height"
+                >
+                  <option value="">State of Residence</option>
+                  {nigeriaStates.map((stateObj, index) => (
+                    <option key={index} value={stateObj.state}>
+                      {stateObj.state}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div> */}
+
+            <h3 className="verification-information">
+              Verification Information
+            </h3>
+            <div className="row form-section-bg-color">
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  value={nin}
+                  type="number"
+                  placeholder="Matric No"
+                  className="form-control form-width-height"
+                  name=""
+                  onChange={(e) => setNin(e.target.value)}
+                />
+
+                {/* {isNinVerified === false && (
+                  <button
+                    style={{
+                      color: "white",
+                      backgroundColor: "green",
+                      border: "none",
+                      padding: "10px 20px",
+                      marginTop: "10px",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleNinVerification}
+                  >
+                    Verify NIN
+                  </button>
+                )}
+
+                {loading && (
+                  <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                )}
+
+                {ninVerificationMessage && (
+                  <p style={{ color: "green", marginTop: "10px" }}>
+                    {ninVerificationMessage}
+                  </p>
+                )} */}
+              </div>
+
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  value={vin}
+                  onChange={(e) => setVin(e.target.value)}
+                  type="text"
+                  placeholder="Your Department"
+                  className="form-control form-width-height"
+                  name=""
+                  id=""
+                />
+                {/* {showVinError ? (
+                  <p style={{ color: "red", marginTop: "10px" }}>
+                    VIN is Incorrect
+                  </p>
+                ) : isVinVerified ? (
+                  <p style={{ color: "green", marginTop: "10px" }}>
+                    Your VIN has been verified!
+                  </p>
+                ) : (
+                  <a
+                    href="#"
+                    style={{ color: "green", marginTop: "10px" }}
+                    onClick={handleVinVerification}
+                  >
+                    Verify
+                  </a>
+                )} */}
+              </div>
+            </div>
+
+            <h3 className="vote-confirmation">Vote Confirmation</h3>
+            <div className="row form-section-bg-color">
+              <div className="col-md-4 mt-4">
+                <input
+                  required
+                  type="text"
+                  value={isSearching.toUpperCase()}
+                  readOnly
+                  className="form-control form-width-height"
+                  name="Party"
+                  id="Party"
+                />
+              </div>
+            </div>
+
+            <div className="form-verification-checkmark">
+              <label>
+                <input
+                  checked={affirmationCheck1}
+                  required
+                  onChange={handleCheckBox1}
+                  type="checkbox"
+                  className="checkbox"
+                  name=""
+                  id=""
+                />{" "}
+                I verify that all information provided are 100% true.
+              </label>
+
+              <label>
+                <input
+                  checked={affirmationCheck2}
+                  onChange={handleCheckBox2}
+                  required
+                  type="checkbox"
+                  className="checkbox"
+                  name=""
+                  id=""
+                />{" "}
+                I verify that I am 100% sure I selected my preferred department
+                to vote for
+              </label>
+              <label>
+                <input
+                  required
+                  checked={affirmationCheck3}
+                  onChange={handleCheckBox3}
+                  type="checkbox"
+                  className="checkbox"
+                  name=""
+                  id=""
+                />{" "}
+                I verify that I have cross-checked all information provided and
+                ready to vote.
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              // onClick={submitFunc}
+              disabled={
+                voteSubmit ||
                 !affirmationCheck1 ||
                 !affirmationCheck2 ||
                 !affirmationCheck3
