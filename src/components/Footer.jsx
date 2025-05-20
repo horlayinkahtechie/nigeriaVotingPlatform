@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="container-fluid bg-success footer-padding">
+    <footer
+      className="container-fluid footer-padding"
+      style={{ backgroundColor: "rgb(45, 45, 73)" }}
+    >
       {/* <img
         src={CoatOfArm}
         style={{ width: "90px", height: "90px" }}
@@ -24,18 +27,13 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link className="link" to="/presidential-voting-dashboard">
+              <Link className="link" to="/fci-voting-dashboard">
                 Voting Dashboard
               </Link>
             </li>
             <li>
-              <Link className="link" to="/presidential-voting-dashboard">
+              <Link className="link" to="/fci-voting-dashboard">
                 Results
-              </Link>
-            </li>
-            <li>
-              <Link className="link" to="/">
-                Support
               </Link>
             </li>
           </ul>
@@ -43,21 +41,18 @@ export default function Footer() {
         <div className="col-md-8">
           <h3 className="footer-heading">LEGAL AND COMPLIANCE</h3>
           <p className="disclaimers">
-            <b>Disclaimer:</b> This voting system is Designed and Developed by
-            Ridwan Akorede Ogunshola Beware of copyright violations.
+            <b>Disclaimer:</b> This student voting system is Designed and
+            Developed by Ridwan Akorede Ogunshola Beware of copyright
+            violations.
           </p>
+
           <p className="disclaimers">
-            <b>Disclaimer:</b> This voting system is authorized by the Electoral
-            Commission of Nigeria. Ensure your information is accurate before
-            submitting.
-          </p>
-          <p className="disclaimers">
-            This platform adheres to accessibility standards to ensure all
-            citizens can participate.
+            This platform adheres to accessibility standards to ensure all fci
+            students can participate.
           </p>
         </div>
         <div className="col-md-12 copyright">
-          © 2025 Presidential Voting System. All rights reserved. Design and
+          © 2025 Student Voting System. All rights reserved. Design and
           Developed by Ridwan Akorede Ogunshola
         </div>
       </div>

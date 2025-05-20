@@ -1,11 +1,14 @@
 // import CoatOfArm from "../Images/Nigeria coat of arm.jfif";
-import logo from "../Images/logoyct.png";
+import logo from "../Images/espam.jfif";
 import { Link } from "react-router-dom";
 import Logout from "./Authentication/Logout";
 
 export default function Sidebar({ user }) {
   return (
-    <nav className="navbar bg-body-tertiary fixed-top">
+    <nav
+      className="navbar bg-body-tertiary fixed-top"
+      style={{ backgroundColor: "white" }}
+    >
       <div className="container-fluid">
         <Link to="/">
           <img
@@ -43,14 +46,14 @@ export default function Sidebar({ user }) {
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item dropdown">
                 <Link
-                  to="/Executive positions"
+                  to="#"
                   style={{ color: "white", fontSize: "20px" }}
                   className="nav-link dropdown-toggle"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Executive position
+                  Vote
                 </Link>
                 <ul
                   className="dropdown-menu dropdown-menu-dark p-3"

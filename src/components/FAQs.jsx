@@ -10,7 +10,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -42,7 +42,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample1">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               This platform allows users to vote for candidates in presidential
               and other political positions. It aims to provide a transparent
               and secure voting experience.
@@ -56,7 +59,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -88,7 +91,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample2">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               Click on the &quot;Sign Up&quot; button and fill in the required
               information. You’ll receive a confirmation email to verify your
               account.
@@ -102,7 +108,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -134,7 +140,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample3">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               Yes, your vote is completely anonymous. We do not store any
               identifiable information with your voting choices.
             </div>
@@ -147,7 +156,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -179,7 +188,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample4">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               No, each registered user is only allowed to vote once per position
               to ensure fair and accurate results.
             </div>
@@ -192,7 +204,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -224,7 +236,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample5">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               Once you&apos;re logged in, navigate to the voting page, select
               the position you wish to vote for, and choose your preferred
               candidate. Click &quot;Submit&quot; to cast your vote.
@@ -269,7 +284,11 @@ export default function FAQs() {
               </svg>
             </button>
           </p>
-          <div className="collapse" id="collapseExample6">
+          <div
+            className="collapse"
+            id="collapseExample6"
+            style={{ backgroundColor: "rgb(45, 45, 73)" }}
+          >
             <div className="dropdown-menu-color">
               Once the voting period ends, results will be displayed on the
               results page, showing the final tally for each candidate.
@@ -283,7 +302,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -315,7 +334,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample7">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               Only registered users who meet the eligibility criteria set by the
               administrators can participate.
             </div>
@@ -328,7 +350,7 @@ export default function FAQs() {
             width: "80%",
             margin: "30px auto",
             marginBottom: "15px",
-            borderBottom: "1px solid green",
+            borderBottom: "1px solid rgb(45, 45, 73)",
           }}
         >
           <p className="d-inline-flex gap-1 faq-dropdown-heading">
@@ -337,7 +359,7 @@ export default function FAQs() {
               style={{
                 border: "none",
                 outline: "none",
-                backgroundColor: "rgb(244, 244, 244)",
+                borderBottom: "1px solid rgb(45, 45, 73)",
               }}
               type="button"
               data-bs-toggle="collapse"
@@ -360,7 +382,10 @@ export default function FAQs() {
             </button>
           </p>
           <div className="collapse" id="collapseExample8">
-            <div className="dropdown-menu-color">
+            <div
+              className="dropdown-menu-color"
+              style={{ backgroundColor: "rgb(45, 45, 73)" }}
+            >
               Yes, each election has a specific voting period. Make sure to cast
               your vote before the deadline. The end time will be displayed on
               the voting page.
